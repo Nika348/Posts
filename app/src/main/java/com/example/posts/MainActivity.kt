@@ -1,5 +1,14 @@
 package com.example.posts
 
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity()
+
+fun main () {
+    println("ООП: Объекты и классы")
+}
+
 data class Post(
     val idPost: Int,
     val ownerId: Long,
@@ -14,10 +23,6 @@ data class Post(
     var isFavorite: Boolean,
     val likes: Likes?
 )
-
-fun main(args: Array<String>) {
-    println("Hello World!")
-}
 
 class Likes {
 }
