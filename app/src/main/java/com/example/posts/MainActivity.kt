@@ -12,16 +12,31 @@ fun main () {
 data class Post(
     val idPost: Int,
     val ownerId: Long,
-    val created_by: Long,
+    val fromId: Long,
+    val createdBy: Long,
     val date: Long,
     val text: String,
-    val reposts: Int,
-    val views: Int,
+    val replyOwnerId: Long,
+    val replyPostId: Long,
+    val friendsOnly: Boolean,
+    val comments: Int,
+    val copyright: String,
+    val likes: Likes?,
+    val reposts: Post?,
+    val views: Post?,
+    val postType: Post?,
+    val postSource: Post?,
+    val geo: Post?,
+    val signerId: Long,
+    var copyHistory: Post?,
     val canPin: Boolean,
     var canDelete: Boolean,
     var canEdit: Boolean,
+    val isPinned: Boolean,
+    var markedAsAds: Boolean,
     var isFavorite: Boolean,
-    val likes: Likes?
+    val postponedId: Int,
+    var attachments: Array<Attachment> = emptyArray<Attachment>()
 )
 
 class Likes {
