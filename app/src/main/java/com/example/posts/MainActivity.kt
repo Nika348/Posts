@@ -1,11 +1,10 @@
 package com.example.posts
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity()
 
-fun main () {
+fun main() {
     println("ООП: Объекты и классы")
 }
 
@@ -39,11 +38,19 @@ data class Post(
     var attachments: Array<Attachment> = emptyArray<Attachment>()
 )
 
+data class Comment(
+    val postId: Int,
+    val from_id: Int,
+    val date: Int,
+    val text: String,
+)
+
 class Likes {
 }
 
 object WallService {
-    var posts = emptyArray<Post>()
+    private var posts = emptyArray<Post>()
+    private var comments = emptyArray<Comment>()
     private var nextId: Int = 0
 
     fun add(post: Post): Post {
@@ -65,4 +72,20 @@ object WallService {
         }
         return false
     }
+
+
+    fun createComment(comment: Comment, nextId: Int): Comment {
+        for (post in posts) {
+            if (nextId == comment.postId) {
+                comments += comment
+                return comments.last()
+            }
+        }
+        throw PostNotFoundException("Нельзя добавить комментарий к несуществующему посту")
+
+    }
+}
+
+class PostNotFoundException(message: String) : RuntimeException(message) {
+
 }
