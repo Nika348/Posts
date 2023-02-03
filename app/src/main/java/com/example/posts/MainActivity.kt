@@ -46,6 +46,7 @@ data class Comment(
 )
 
 class Likes {
+    //Добавляет лайк
 }
 
 object WallService {
